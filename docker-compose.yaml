@@ -1,0 +1,51 @@
+version: "3.9"
+services:
+  server:
+    image: node:14
+    container_name: server
+    depends_on:
+      - dbmongo
+    ports:
+      - "3000:3000"
+      # - "9229:9229"
+    volumes:
+      - ./src:/app/
+    networks:
+      - app
+    user: "1000"
+    entrypoint: /app/start.sh
+
+  dbmongo:
+    image: mongo:latest
+    restart: on-failure
+    container_name: dbmongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=$MONGO_USER
+      - MONGO_INITDB_ROOT_PASSWORD=$MONGO_PASSWORD
+      - MONGO_INITDB_DATABASE=$MONGO_DB
+    networks:
+      - app
+    expose:
+      - 27017
+    volumes:
+      - mongodata:/data/db
+
+  mongo-express:
+    image: mongo-express
+    depends_on:
+      - dbmongo
+    restart: always
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=$MONGO_USER
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=$MONGO_PASSWORD
+      - ME_CONFIG_MONGODB_SERVER=dbmongo
+    networks:
+      - app
+    ports:
+      - 8081:8081
+
+networks:
+  app:
+
+volumes:
+  mongodata:
