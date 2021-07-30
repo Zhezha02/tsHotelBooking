@@ -1,10 +1,6 @@
-import Room from './room'
-import Booking from './booking'
-import User from './user'
-
-// type ModelsSchemas = {
-//   room: RoomSchema
-// }
+import { Room } from './room'
+import { Booking } from './booking'
+import { User } from './user'
 
 export default {
   Room,

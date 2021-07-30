@@ -1,27 +1,24 @@
-import { Schema, model, Document, ObjectId } from 'mongoose'
+import { Schema, model, Model, ObjectId } from 'mongoose'
 import bcrypt from 'bcrypt'
+// import { UserSchema } from '../types'
 
-type UserSchema =  {
-  login: string
-  password: string
-}
-interface UserDoc extends Document{
+export interface IUser {
   login: string
   password: string
   id: ObjectId
 }
 
-const userSchema = new Schema<UserSchema>({
+const userSchema = new Schema<IUser>({
   login: { type: String, required: true, unique: true },
   password: { type: String, required: true }
 })
 
 userSchema.pre('save', async function (next) {
-  const user: UserDoc = this
-  if (user.isModified('password')) {
-    user.password = await bcrypt.hash(user.password, 12)
+  // const user: UserModel = this
+  if (this.isModified('password')) {
+    this.password = await bcrypt.hash(this.password, 12)
   }
   next()
 })
 
-export default model<UserSchema>('User', userSchema)
+export const User = model<IUser>('User', userSchema)

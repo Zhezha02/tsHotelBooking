@@ -1,16 +1,19 @@
-import { Schema, model, Types } from 'mongoose'
+import { Schema, model, Types, ObjectId } from 'mongoose'
 
 const { ObjectId } = Types
 
-type BookingSchema =  {
-  login: string
-  password: string
+export interface IBooking {
+  room: ObjectId
+  user: ObjectId
+  from: Date
+  to: Date
 }
 
-const bookingSchema = new Schema<BookingSchema>({
+const bookingSchema = new Schema<IBooking>({
   room: { type: ObjectId, ref: 'Room', required: true },
   user: { type: ObjectId, ref: 'User', required: true },
   from: { type: Date, required: true },
   to: { type: Date, required: true }
 })
-export default model<BookingSchema>('Booking', bookingSchema)
+
+export const Booking = model<IBooking>('Booking', bookingSchema)
