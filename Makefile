@@ -2,13 +2,17 @@
 
 
 up: 
-	docker-compose up -d && docker-compose run server bash
+	docker-compose up
+# -d && docker-compose run server bash
 
 stop:
 	docker-compose down 
 
 down:
 	docker-compose down -v
+
+restart:
+	docker-compose down && docker-compose up
 
 run:
 	docker-compose run server sh

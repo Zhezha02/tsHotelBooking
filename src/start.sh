@@ -2,8 +2,8 @@
 
 # npm i
 
-cd /app 
+cd /app/server 
 
-echo OLOLOLOLO 
+npm run watch &
 
-# npm run start && npm run watch
+npm run start 

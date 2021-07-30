@@ -7,6 +7,8 @@ const {
 } = process.env
 
 const path = `mongodb://${user}:${password}@${host}:27017/${db}?authSource=admin`
+// const path = `mongodb://${user}:${password}@localhost:27017/${db}?authSource=admin`
+console.log('FROM NONGOOSE')
 
 export default mongoose.connect(path, {
   useNewUrlParser: true,
