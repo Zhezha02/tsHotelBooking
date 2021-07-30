@@ -1,32 +1,32 @@
-{
+module.exports = {
   // Настройки проекта
-  "env": {
+  env: {
     // Проект для браузера
     // "browser": true,
     // Включаем возможности ES6
-    "es6": true
+    es6: true
     // Добавляем возможности ES2017
     // "es2017": true
   },
   // Наборы правил
-  "extends": [
+  extends: [
     // Базовый набор правил eslint
-    "eslint:recommended",
+    'eslint:recommended',
     // Отключаем правила из базового набора
-    "plugin:@typescript-eslint/eslint-recommended",
+    'plugin:@typescript-eslint/eslint-recommended',
     // Базовые правила для TypeScript
-    "plugin:@typescript-eslint/recommended",
+    'plugin:@typescript-eslint/recommended',
     // Правила TS, требующие инфо о типах
-    "plugin:@typescript-eslint/recommended-requiring-type-checking"
+    'plugin:@typescript-eslint/recommended-requiring-type-checking'
   ],
   // Движок парсинга
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
     // Движку нужен проект TS для правил с типами
-    "project": "tsconfig.json",
-    "tsconfigRootDir": "."
+    project: 'tsconfig.json',
+    tsconfigRootDir: __dirname
   },
   // Плагин с наборами правил для TypeScript
-  "plugins": ["@typescript-eslint"],
-  "rules": {}
+  plugins: ['@typescript-eslint'],
+  rules: {}
 }

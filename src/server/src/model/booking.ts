@@ -8,6 +8,15 @@ export interface IBooking {
   from: Date
   to: Date
 }
+export type bookingInput = {
+  room: ObjectId
+  user: ObjectId
+  from: Date
+  to: Date
+}
+export type bookingInputType = {
+  bookingInput: bookingInput
+}
 
 const bookingSchema = new Schema<IBooking>({
   room: { type: ObjectId, ref: 'Room', required: true },

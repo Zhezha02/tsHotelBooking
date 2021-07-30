@@ -1,6 +1,5 @@
 import { Schema, model, Model, ObjectId } from 'mongoose'
 import bcrypt from 'bcrypt'
-// import { UserSchema } from '../types'
 
 export interface IUser {
   login: string
@@ -12,6 +11,15 @@ const userSchema = new Schema<IUser>({
   login: { type: String, required: true, unique: true },
   password: { type: String, required: true }
 })
+
+export type userInput = {
+  login: string
+  password: string
+}
+export type userInputSchema = {
+  userInput: userInput
+}
+
 
 userSchema.pre('save', async function (next) {
   // const user: UserModel = this

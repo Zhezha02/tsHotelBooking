@@ -1,10 +1,9 @@
 import path from 'path'
 import express from 'express'
 import mongoose from 'mongoose'
+import { graphqlHTTP } from 'express-graphql'
 import schema from './graphql/schema'
- 
-// import pug from 'pug'
-// import connect from './db/mongoose'
+import resolvers from './graphql/resolvers'
 
 const { SERVER_PORT: port = 3000 } = process.env
 
@@ -12,14 +11,23 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const app = express()
-
-app.set('views', path.join(__dirname, 'view'))
+console.log('>>>>', path.join(__dirname, '../../views'))
+app.set('views', path.join(__dirname, '../../views'))
 app.set('view engine', 'pug')
 
 app.get('/', (req, res) => {
   res.render('index')
 })
 
+app.use('/graphql', (req, res) => {
+  graphqlHTTP({
+    schema: schema,
+    rootValue: resolvers,
+    graphiql: true
+  })(req, res)
+    .then()
+    .catch(console.error)
+})
 
 const {
   MONGO_USER: user = 'developer',

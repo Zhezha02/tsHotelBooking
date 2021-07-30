@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es2018",
     "module": "commonjs",
     "moduleResolution": "Node",
-    "lib": ["es6"],
+    "lib": ["es2018", "esnext.asynciterable"],
     // "allowJs": true,
 
     "outDir": "./build",
@@ -11,14 +11,17 @@
 
     "strict": true,
     "esModuleInterop": true,
-    "declaration": true,
-    "declarationDir": "./types",
+    // "declaration": true,
+    // "declarationDir": "./types",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
 
     "resolveJsonModule": true,
 
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["./src/**/*"],
+  // "files": ["./src/view"],
+  "include": ["./src/**/*.ts"],
   "exclude": ["node_modules", ".eslintrc.js"]
 }

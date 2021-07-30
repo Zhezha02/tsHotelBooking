@@ -1,4 +1,4 @@
-import  { buildSchema } from "graphql";
+import { buildSchema } from 'graphql'
 
 export default buildSchema(`
 type User {
@@ -19,6 +19,10 @@ type Booking {
   user: User!
   from: String!
   to: String!
+}
+
+type AuthToken {
+  token: String!
 }
 
 input UserInput {
@@ -42,10 +46,11 @@ type RootQuery {
   bookings:[Booking!]!
   bookingsQuery:[Booking!]!
   rooms:[Room!]!
+  login: AuthToken
 }
 
 type RootMutation {
-  createUser(userInput: UserInput): User
+  createUser(userInput: UserInput): AuthToken
   createRoom(roomInput: RoomInput): Room
   createBooking(bookingInput: BookingInput): Booking
 }
@@ -54,4 +59,4 @@ schema {
   query: RootQuery
   mutation: RootMutation 
 }
-`);
+`)
