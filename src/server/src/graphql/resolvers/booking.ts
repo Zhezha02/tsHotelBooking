@@ -1,5 +1,5 @@
 import { ObjectId } from 'mongoose'
-import { bookingInputType, IBooking } from './../../model/booking'
+import { bookingInputType, IBooking } from '../../model/booking'
 import Model from '../../model'
 
 const { Booking } = Model
@@ -26,7 +26,7 @@ const checkRange = async (room: ObjectId, start: Date, end: Date) => {
   }
 }
 
-export default {
+const res =  {
   bookings: async (): Promise<IBooking[]> => {
     try {
       const booking = await Booking.find()
@@ -86,3 +86,4 @@ export default {
     }
   }
 }
+export default res

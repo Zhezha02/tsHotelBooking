@@ -16,6 +16,6 @@ export function createUser (login: string, password: string) {
         }
       }
     `,
-    { token }
+/*    { token }*/
   )
 }
