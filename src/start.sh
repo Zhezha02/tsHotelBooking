@@ -11,4 +11,7 @@ npm run watch &
 
 npm run start 
 
+# TODO: add start.sh from client
 
+# npm run watch
+# npm run build
