@@ -4,6 +4,7 @@ import mongoose from 'mongoose'
 import { graphqlHTTP } from 'express-graphql'
 import schema from './graphql/schema'
 import resolvers from './graphql/resolvers'
+import populateRoomTables from './utils/populateRoomTable'
 
 const { SERVER_PORT: port = 3000 } = process.env
 
@@ -11,7 +12,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const app = express()
-console.log('>>>>', path.join(__dirname, '../../views'))
+// console.log('>>>>', path.join(__dirname, '../../views'))
 app.set('views', path.join(__dirname, '../../views'))
 app.set('view engine', 'pug')
 
@@ -45,8 +46,11 @@ mongoose
   })
   .then(() => {
     console.log(`MONGOOSE START on port 27017`)
+
     app.listen(port, () => {
       console.log(`server listen port ${port}`)
     })
+
+    populateRoomTables(5)
   })
   .catch(err => console.log(err))
