@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --watch",
     "watch": "tsc --watch",
     "eslint": "eslint --cache --ext .js,.jsx,.ts,.tsx ./src",
     "eslint:dump": "eslint --print-config ./.eslintrc.json"
@@ -27,6 +27,7 @@
     "webpack-cli": "^4.7.2"
   },
   "dependencies": {
+    "@babel/core": "^7.15.5",
     "@fullcalendar/core": "^5.9.0",
     "@fullcalendar/daygrid": "^5.9.0",
     "@fullcalendar/interaction": "^5.9.0",
@@ -34,6 +35,7 @@
     "@fullcalendar/timegrid": "^5.9.0",
     "bootstrap": "^5.0.2",
     "fullcalendar": "^5.9.0",
+    "graphql": "^15.5.3",
     "graphql-request": "^3.5.0"
   }
 }
