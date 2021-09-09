@@ -1,7 +1,8 @@
-div#auth
-  label(for='login') login 
-  input(placeholder='Login')#login
+//div#auth.authContainer
+label(for='login').inputLabel
+  input(placeholder='Enter login')#login.input
 
-  label(for='password') password
-  input(type='password' placeholder='Password')#password
-  button(type='submit').btn.btn-primary#authBtn Log in
+label(for='password').inputLabel
+  input(type='password' placeholder='Enter password')#password.input
+
+button(type='submit').btn.btn-primary.authBtn#authBtn Log in
